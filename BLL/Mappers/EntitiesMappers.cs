@@ -17,24 +17,26 @@ namespace BLL.Mappers
                 Name = account.Name,
                 Number = account.Number,
                 Balance = account.Balance,
+                Email = account.Email,
                 Points = account.Points,
-                AccountType = account.GetAccountType()
+                AccountType = (byte)account.GetAccountType()
             };
         }
 
         public static Account ToAccount(this AccountDto account)
         {
             Account result = null;
-            switch(account.AccountType)
+            AccountType accountType = (AccountType)account.AccountType;
+            switch(accountType)
             {
                 case AccountType.Base:
-                    result = new BaseAccount(account.Number, account.Name, account.Balance, account.Points);
+                    result = new BaseAccount(account.Number, account.Name, account.Email, account.Balance, account.Points);
                     break;
                 case AccountType.Gold:
-                    result = new GoldAccount(account.Number, account.Name, account.Balance, account.Points);
+                    result = new GoldAccount(account.Number, account.Name, account.Email, account.Balance, account.Points);
                     break;
                 case AccountType.Platinum:
-                    result = new PlatinumAccount(account.Number, account.Name, account.Balance, account.Points);
+                    result = new PlatinumAccount(account.Number, account.Name, account.Email, account.Balance, account.Points);
                     break;
             }
             return result;

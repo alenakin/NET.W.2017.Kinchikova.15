@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A21A8C5-B687-4552-9ABB-5DBCB4E0D6CC}</ProjectGuid>
+    <ProjectGuid>{740D7EAA-21AF-4E2B-B8FE-33A9EDBDA171}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DependencyResolver</RootNamespace>
-    <AssemblyName>DependencyResolver</AssemblyName>
+    <RootNamespace>DAL.EF</RootNamespace>
+    <AssemblyName>DAL.EF</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,32 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ResolverConfig.cs" />
+    <Compile Include="AccountContext.cs" />
+    <Compile Include="AccountDBRepository.cs" />
+    <Compile Include="Mappers\EntitiesMapper.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Owner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL.Interface\BLL.Interface.csproj">
-      <Project>{7a729b63-c723-441e-a5d3-73664f263d35}</Project>
-      <Name>BLL.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{4a91db6e-d638-40f5-a1a9-84611d3c1e68}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL.EF\DAL.EF.csproj">
-      <Project>{740d7eaa-21af-4e2b-b8fe-33a9edbda171}</Project>
-      <Name>DAL.EF</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAL.Interface\DAL.Interface.csproj">
       <Project>{7c206b2b-60c8-40ce-bbd2-da8a4fe43a27}</Project>
       <Name>DAL.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{34a88061-c963-4f08-af61-e12fd67848d2}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

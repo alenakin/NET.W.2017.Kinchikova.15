@@ -16,6 +16,7 @@ namespace BLL.Interface.Entities
         protected string name;
         protected decimal balance;
         protected int points;
+        protected string email;
         #endregion
 
         #region Constructors
@@ -24,10 +25,11 @@ namespace BLL.Interface.Entities
         /// </summary>
         /// <param name="accountNumber">Number of account.</param>
         /// <param name="name">Name of owner of the account.</param>
-        public Account(string accountNumber, string name)
+        public Account(string accountNumber, string name, string email)
         {
             Number = accountNumber;
             Name = name;
+            Email = email;
             Balance = 0;
         }
 
@@ -37,7 +39,7 @@ namespace BLL.Interface.Entities
         /// <param name="accountNumber">Number of account.</param>
         /// <param name="name">Name of owner of the account.</param>
         /// <param name="balance">Balance of the account.</param>
-        public Account(string accountNumber, string name, decimal balance) : this(accountNumber, name)
+        public Account(string accountNumber, string name, string email, decimal balance) : this(accountNumber, name, email)
         {
             Balance = balance;
         }
@@ -49,7 +51,8 @@ namespace BLL.Interface.Entities
         /// <param name="name">Name of owner of the account.</param>
         /// <param name="balance">Balance of the account.</param>
         /// <param name="points">Bonus point of the account.</param>
-        public Account(string accountNumber, string name, decimal balance, int points) : this(accountNumber, name, balance)
+        public Account(string accountNumber, string name, string email, decimal balance, int points) : 
+            this(accountNumber, name, email, balance)
         {
             Points = points;
         }
@@ -79,6 +82,24 @@ namespace BLL.Interface.Entities
                 }
 
                 name = value;
+            }
+        }
+
+        /// <summary>
+        /// Email of account's owner.
+        /// </summary>
+        public string Email
+        {
+            get => email;
+
+            protected set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException($"{nameof(value)} can't be null or empty");
+                }
+
+                email = value;
             }
         }
 
@@ -127,7 +148,6 @@ namespace BLL.Interface.Entities
 
             protected set
             {
-                //Console.WriteLine(value);
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException("Balance cant't be less than 0");

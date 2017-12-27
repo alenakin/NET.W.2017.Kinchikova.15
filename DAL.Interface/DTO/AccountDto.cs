@@ -23,6 +23,11 @@ namespace DAL.Interface.DTO
         public string Number { get; set; }
 
         /// <summary>
+        /// Email of account's owner.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
         /// Balance of the account.
         /// </summary>
         public decimal Balance { get; set; }
@@ -35,6 +40,6 @@ namespace DAL.Interface.DTO
         /// <summary>
         /// Type of the account.
         /// </summary>
-        public AccountType AccountType { get; set; }
+        public byte AccountType { get; set; }
     }
 }

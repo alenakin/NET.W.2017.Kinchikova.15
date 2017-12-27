@@ -24,7 +24,7 @@ namespace BLL.Interface.Interfaces
         /// <param name="name">Name of account's owner.</param>
         /// <param name="accountType">Type of account.</param>
         /// <param name="creator">Service for creating number of account.</param>
-        void OpenAccount(string name, AccountType accountType, IAccountNumberCreateService creator);
+        void OpenAccount(string name, string email, AccountType accountType, IAccountNumberCreateService creator);
 
         /// <summary>
         /// Adds money for specified account.

@@ -23,7 +23,7 @@ namespace BLL.Interface.Entities
         /// </summary>
         /// <param name="accountNumber">Number of account.</param>
         /// <param name="name">Name of owner of the account.</param>
-        public PlatinumAccount(string accountNumber, string name) : base(accountNumber, name) { }
+        public PlatinumAccount(string accountNumber, string name, string email) : base(accountNumber, name, email) { }
 
         /// <summary>
         /// Creates new platinum account using number, owner's name and balance.
@@ -31,7 +31,8 @@ namespace BLL.Interface.Entities
         /// <param name="accountNumber">Number of account.</param>
         /// <param name="name">Name of owner of the account.</param>
         /// <param name="balance">Balance of the account.</param>
-        public PlatinumAccount(string accountNumber, string name, decimal balance) : base(accountNumber, name, balance) { }
+        public PlatinumAccount(string accountNumber, string name, string email, decimal balance) : 
+            base(accountNumber, name, email, balance) { }
 
         /// <summary>
         /// Creates new platinum account using number, owner's name, balance and bonus points.
@@ -40,8 +41,8 @@ namespace BLL.Interface.Entities
         /// <param name="name">Name of owner of the account.</param>
         /// <param name="balance">Balance of the account.</param>
         /// <param name="points">Bonus point of the account.</param>
-        public PlatinumAccount(string accountNumber, string name, decimal balance, int points) :
-            base(accountNumber, name, balance, points)
+        public PlatinumAccount(string accountNumber, string name, string email, decimal balance, int points) :
+            base(accountNumber, name, email, balance, points)
         { }
         #endregion
 

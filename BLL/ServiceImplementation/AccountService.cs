@@ -64,19 +64,19 @@ namespace BLL.ServiceImplementation
         /// <param name="name">Name of account's owner.</param>
         /// <param name="accountType">Type of account.</param>
         /// <param name="creator">Service for creating number of account.</param>
-        public void OpenAccount(string name, AccountType accountType, IAccountNumberCreateService creator)
+        public void OpenAccount(string name, string email, AccountType accountType, IAccountNumberCreateService creator)
         {
             Account account = null;
             switch(accountType)
             {
                 case AccountType.Base:
-                    account = new BaseAccount(creator.Create(accountNum++), name);
+                    account = new BaseAccount(creator.Create(accountNum++), name, email);
                     break;
                 case AccountType.Gold:
-                    account = new GoldAccount(creator.Create(accountNum++), name);
+                    account = new GoldAccount(creator.Create(accountNum++), name, email);
                     break;
                 case AccountType.Platinum:
-                    account = new PlatinumAccount(creator.Create(accountNum++), name);
+                    account = new PlatinumAccount(creator.Create(accountNum++), name, email);
                     break;
             }
             repository.Create(account.ToAccountDto());

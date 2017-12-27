@@ -21,32 +21,32 @@ namespace ConsolePL
         {
             IAccountService service = resolver.Get<IAccountService>();
             IAccountNumberCreateService creator = resolver.Get<IAccountNumberCreateService>();
-            
-            service.OpenAccount("Account owner 1", AccountType.Base, creator);
-            service.OpenAccount("Account owner 2", AccountType.Base, creator);
-            service.OpenAccount("Account owner 3", AccountType.Base, creator);
 
-            var creditNumbers = service.GetAllAccounts().Select(acc => acc.Number).ToArray();
+            service.OpenAccount("Account owner 1", "email1", AccountType.Base, creator);
+            service.OpenAccount("Account owner 2", "email2", AccountType.Base, creator);
+            service.OpenAccount("Account owner 3", "email3", AccountType.Base, creator);
 
-            foreach (var t in creditNumbers)
-            {
-                service.DepositAccount(t, 100);
-            }
+            //var creditNumbers = service.GetAllAccounts().Select(acc => acc.Number).ToArray();
 
-            foreach (var item in service.GetAllAccounts())
-            {
-                Console.WriteLine(item);
-            }
-
-            foreach (var t in creditNumbers)
-            {
-                service.WithdrawAccount(t, 10);
-            }
+            //foreach (var t in creditNumbers)
+            //{
+            //    service.DepositAccount(t, 100);
+            //}
 
             foreach (var item in service.GetAllAccounts())
             {
                 Console.WriteLine(item);
             }
+
+            //foreach (var t in creditNumbers)
+            //{
+            //    service.WithdrawAccount(t, 10);
+            //}
+
+            //foreach (var item in service.GetAllAccounts())
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
     }
 }
